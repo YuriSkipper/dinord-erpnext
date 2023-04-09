@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include dinord_erpnext_customization *.css
+recursive-include dinord_erpnext_customization *.csv
+recursive-include dinord_erpnext_customization *.html
+recursive-include dinord_erpnext_customization *.ico
+recursive-include dinord_erpnext_customization *.js
+recursive-include dinord_erpnext_customization *.json
+recursive-include dinord_erpnext_customization *.md
+recursive-include dinord_erpnext_customization *.png
+recursive-include dinord_erpnext_customization *.py
+recursive-include dinord_erpnext_customization *.svg
+recursive-include dinord_erpnext_customization *.txt
+recursive-exclude dinord_erpnext_customization *.pyc
