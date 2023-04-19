@@ -199,3 +199,7 @@ app_license = "MIT"
 # auth_hooks = [
 #	"dinord_erpnext_customization.auth.validate"
 # ]
+
+# Fixtures - ERPNext customization transport between ERPNext instances
+
+fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Custom Script', 'Server Script', 'Property Setter', 'Workflow', 'Workflow State', 'Workflow Action']
