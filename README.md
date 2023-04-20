@@ -1,6 +1,6 @@
 ## Dinord ERPNext Customization
 
-Different customizations
+ERPNext customization transport between different ERPNext instances
 
 #### License
 
