@@ -1,0 +1,64 @@
+{
+ "charts": [
+  {
+   "chart_name": "Project Summary",
+   "label": "Dinord Projects"
+  }
+ ],
+ "content": "[{\"id\":\"8CHMkpwi-k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dinord</span>\",\"col\":12}}]",
+ "creation": "2023-04-20 18:47:43.184920",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "dialpad",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Dinord",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dinord",
+   "link_count": 0,
+   "link_to": "Project",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-04-26 15:39:20.370353",
+ "modified_by": "Administrator",
+ "module": "Dinord ERPNext Customization",
+ "name": "Dinord",
+ "number_cards": [
+  {
+   "label": "Dinord",
+   "number_card_name": "Open Opportunity"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Project",
+   "label": "Dinord"
+  }
+ ],
+ "roles": [
+  {
+   "role": "Administrator"
+  }
+ ],
+ "sequence_id": 31.0,
+ "shortcuts": [
+  {
+   "doc_view": "Dashboard",
+   "label": "Projects Dashboard",
+   "link_to": "Project",
+   "type": "Dashboard"
+  }
+ ],
+ "title": "Dinord"
+}
