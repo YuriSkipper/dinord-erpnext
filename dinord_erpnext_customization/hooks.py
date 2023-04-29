@@ -202,4 +202,8 @@ app_license = "MIT"
 
 # Fixtures - ERPNext customization transport between different ERPNext instances
 
-fixtures = ['Report', 'Role Profile', 'Role', 'DocPerm', 'Custom Field', 'Custom Role', 'Custom DocPerm', 'Notification Settings', 'Server Script', 'Property Setter', 'Workflow', 'Workflow State', 'Workflow Action']
+fixtures = [
+    'Custom Field', 'Custom Role', 'Custom DocPerm', 'Server Script'
+]
+
+# More items to the fixtures array will be added
