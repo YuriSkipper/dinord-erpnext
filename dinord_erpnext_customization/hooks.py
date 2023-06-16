@@ -206,4 +206,4 @@ fixtures = [
     'Custom Field', 'Server Script'
 ]
 
-# More items to the fixtures array will be added
+# More items to the fixtures array will be added soon
