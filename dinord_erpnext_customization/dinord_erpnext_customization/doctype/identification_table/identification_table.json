@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-30 16:39:46.819178",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "code",
+  "country",
+  "by",
+  "when",
+  "valid_from",
+  "valid_for"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Tax Identification Types",
+   "reqd": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "\u0421ountry"
+  },
+  {
+   "fieldname": "by",
+   "fieldtype": "Data",
+   "label": "Issued by"
+  },
+  {
+   "fieldname": "when",
+   "fieldtype": "Date",
+   "label": "When issued"
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid from"
+  },
+  {
+   "fieldname": "valid_for",
+   "fieldtype": "Date",
+   "label": "Valid for"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-07-30 17:12:17.855216",
+ "modified_by": "Administrator",
+ "module": "Dinord ERPNext Customization",
+ "name": "Identification Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
