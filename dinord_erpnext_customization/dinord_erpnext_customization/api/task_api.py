@@ -1,4 +1,3 @@
-from erpnext.projects.doctype.task.utils import TaskRepr
 import frappe
 
 from ..utils.task_repr import TaskRepr
