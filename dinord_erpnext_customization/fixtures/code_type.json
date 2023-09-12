@@ -1,0 +1,90 @@
+[
+ {
+  "code_type": "\u0418\u041d\u041d",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:44:01.460021",
+  "name": "\u0418\u041d\u041d",
+  "type": "\u0418\u041d\u041d",
+  "unique": "\u0412 \u0440\u0430\u043c\u043a\u0430\u0445 \u0441\u0442\u0440\u0430\u043d\u044b"
+ },
+ {
+  "code_type": "\u0411\u0418\u041d",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:44:25.725047",
+  "name": "\u0411\u0418\u041d",
+  "type": "\u0411\u0418\u041d",
+  "unique": "\u0412 \u0440\u0430\u043c\u043a\u0430\u0445 \u0441\u0442\u0440\u0430\u043d\u044b"
+ },
+ {
+  "code_type": "\u041a\u041f\u041f",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:44:54.040852",
+  "name": "\u041a\u041f\u041f",
+  "type": "\u041a\u041f\u041f",
+  "unique": "\u0412 \u0440\u0430\u043c\u043a\u0430\u0445 \u0441\u0442\u0440\u0430\u043d\u044b"
+ },
+ {
+  "code_type": "\u041e\u0413\u0420\u041d",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:45:30.262767",
+  "name": "\u041e\u0413\u0420\u041d",
+  "type": "\u041e\u0413\u0420\u041d",
+  "unique": "\u0412 \u0440\u0430\u043c\u043a\u0430\u0445 \u0441\u0442\u0440\u0430\u043d\u044b"
+ },
+ {
+  "code_type": "\u041e\u041a\u041f\u041e",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:46:12.030771",
+  "name": "\u041e\u041a\u041f\u041e",
+  "type": "\u041e\u041a\u041f\u041e",
+  "unique": "\u0412 \u0440\u0430\u043c\u043a\u0430\u0445 \u0441\u0442\u0440\u0430\u043d\u044b"
+ },
+ {
+  "code_type": "\u041e\u041a\u041e\u041f\u0424",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:46:57.152510",
+  "name": "\u041e\u041a\u041e\u041f\u0424",
+  "type": "\u041e\u041a\u041e\u041f\u0424",
+  "unique": "\u041d\u0435\u0442"
+ },
+ {
+  "code_type": "SAP Cust ID",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:47:31.108364",
+  "name": "SAP Cust ID",
+  "type": "SAP Cust ID",
+  "unique": "\u0413\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e"
+ },
+ {
+  "code_type": "D-U-N-S",
+  "docstatus": 0,
+  "doctype": "Code Type",
+  "enabled": 1,
+  "main_tax_id": 0,
+  "modified": "2023-08-07 16:48:22.318517",
+  "name": "D-U-N-S",
+  "type": "D-U-N-S",
+  "unique": "\u0413\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e"
+ }
+]

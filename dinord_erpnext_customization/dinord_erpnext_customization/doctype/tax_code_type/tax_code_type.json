@@ -40,7 +40,7 @@
  "modified": "2023-07-29 20:45:00.749832",
  "modified_by": "Administrator",
  "module": "Dinord ERPNext Customization",
- "name": "Tax Identification Types",
+ "name": "Tax Code Type",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

@@ -203,5 +203,11 @@ app_license = "MIT"
 # Fixtures - ERPNext customization transport between different ERPNext instances
 
 fixtures = [
-    'Code Type'
+    {"dt": "DocType", "filters": [
+        [
+            "name", "in", [
+                "Contact Profiles"
+            ]
+        ]
+    ]}
 ]
