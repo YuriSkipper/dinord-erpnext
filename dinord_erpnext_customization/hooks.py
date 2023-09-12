@@ -206,7 +206,9 @@ fixtures = [
     {"dt": "DocType", "filters": [
         [
             "name", "in", [
-                "Contact Profiles"
+                "Contact Profiles",
+                "Issue",
+                "Prospect"
             ]
         ]
     ]}
