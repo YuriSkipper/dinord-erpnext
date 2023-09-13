@@ -209,7 +209,8 @@ fixtures = [ "Client Script", "Task Type", "Custom Field", "Workflow", "Workflow
             "name", "in", [
                 "Contact Profiles",
                 "Issue ABAP",
-                "Task ABAP"               
+                "Task ABAP",
+                "Assigne"               
             ]
         ]
     ]}
