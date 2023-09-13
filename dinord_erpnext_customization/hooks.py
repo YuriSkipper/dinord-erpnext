@@ -202,13 +202,13 @@ app_license = "MIT"
 
 # Fixtures - ERPNext customization transport between different ERPNext instances
 
-fixtures = [
+fixtures = [ "Client Script", "Task Type", "Custom Field", "Workflow", "Workflow State",
+             "Workflow Action", "Notification","Role Profile", "Role", "Report", "Property Setter",
     {"dt": "DocType", "filters": [
         [
             "name", "in", [
-                "Contact Profiles",
-                "Issue",
-                "Prospect"
+                "Contact Profiles"
+                
             ]
         ]
     ]}

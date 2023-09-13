@@ -2,7 +2,7 @@
  {
   "code_type": "\u0418\u041d\u041d",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:44:01.460021",
@@ -13,7 +13,7 @@
  {
   "code_type": "\u0411\u0418\u041d",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:44:25.725047",
@@ -24,7 +24,7 @@
  {
   "code_type": "\u041a\u041f\u041f",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:44:54.040852",
@@ -35,7 +35,7 @@
  {
   "code_type": "\u041e\u0413\u0420\u041d",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:45:30.262767",
@@ -46,7 +46,7 @@
  {
   "code_type": "\u041e\u041a\u041f\u041e",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:46:12.030771",
@@ -57,7 +57,7 @@
  {
   "code_type": "\u041e\u041a\u041e\u041f\u0424",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:46:57.152510",
@@ -68,7 +68,7 @@
  {
   "code_type": "SAP Cust ID",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:47:31.108364",
@@ -79,7 +79,7 @@
  {
   "code_type": "D-U-N-S",
   "docstatus": 0,
-  "doctype": "Tax Code Type",
+  "doctype": "TAX ID Code Type",
   "enabled": 1,
   "main_tax_id": 0,
   "modified": "2023-08-07 16:48:22.318517",
