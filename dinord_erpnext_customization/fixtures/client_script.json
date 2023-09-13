@@ -1,0 +1,167 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task ABAP",
+  "enabled": 0,
+  "modified": "2023-08-01 15:51:32.215496",
+  "module": "",
+  "name": "Custom Dialog",
+  "script": "frappe.ui.form.on('Task ABAP', {\nrefresh(frm) {\n    if (frm.doc.status==\"\u0423\u0442\u043e\u0447\u043d\u0435\u043d\u0438\u0435 \u043f\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438\")\nvar d = new frappe.ui.Dialog({\n    'fields': [\n         {'fieldname': 'ht', 'fieldtype': 'HTML'},\n        {\n            label: 'Comm',\n            fieldname: 'comm',\n            fieldtype: 'Small Text'\n        }\n    ],\n    \nprimary_action(values) {\n        console.log(values);\n        d.hide();\n    }    \n});\nd.fields_dict.ht.$wrapper.html('\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0437\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u0435 \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435');\nd.show();\n\t}\n\t\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task",
+  "enabled": 0,
+  "modified": "2023-09-05 12:44:36.915516",
+  "module": null,
+  "name": "Task Test",
+  "script": "frappe.ui.form.on('Task', {\r\n    status: function(frm) {\r\n        if(frm.doc.status === 'Pending Review') {\r\n            frappe.call({\r\n                method: \"myapp.tasks.send_email_notification\",\r\n                args: {\r\n                    task: frm.doc.name\r\n                },\r\n                callback: function(response) {\r\n                    console.log(response.message);\r\n                }\r\n            });\r\n        }\r\n    }\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task ABAP",
+  "enabled": 0,
+  "modified": "2023-07-31 20:24:57.157132",
+  "module": null,
+  "name": "Custom Dialog 2",
+  "script": "frappe.ui.form.on('Task ABAP', {\n    refresh(frm) {\nfrm.toggle_reqd('comm', frm.doc.status === '\u0423\u0442\u043e\u0447\u043d\u0435\u043d\u0438\u0435 \u043f\u043e\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438')\n}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task Test",
+  "enabled": 0,
+  "modified": "2023-08-03 17:20:05.143484",
+  "module": null,
+  "name": "Confirm Read Only",
+  "script": "frappe.ui.form.on('Task Test', {\n\trefresh(frm) {\n\t\tlet is_allowed=frappe.user.owner;\n        frm.toggle_enable(['confirm'], is_allowed);\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task",
+  "enabled": 1,
+  "modified": "2023-09-08 15:08:08.801738",
+  "module": null,
+  "name": "Confirm",
+  "script": " frappe.ui.form.on('Task', {\n  refresh: function(frm) {\n    if (frm.doc.confirm) {\n      if (frm.doc.owner === frappe.session.user) {\n        frm.set_df_property('status', 'options', 'Open\\nCompleted');\n      } else {\n        frm.set_df_property('status', 'options', 'Open\\nWorking\\nPending Review');\n      }\n    } else {\n      if (frm.doc.owner === frappe.session.user) {\n        frm.set_df_property('status', 'options', 'Open\\nWorking\\nPending Review\\nCompleted');\n      } else {\n        frm.set_df_property('status', 'options', 'Open\\nWorking\\nPending Review\\nCompleted');\n      }\n    }\n  }\n});\n\nfrappe.ui.form.on(\"Task\", \"onload\", function(frm) {\n    if (frappe.session.user !== frm.doc.owner) {\n        frm.toggle_enable(\"confirm\", false);\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task",
+  "enabled": 0,
+  "modified": "2023-08-20 16:46:29.005698",
+  "module": null,
+  "name": "Status Read Only",
+  "script": "frappe.ui.form.on('Task', {\r\n\r\n   refresh(frm) {\r\n\r\n   setTimeout(() => {\r\n\r\n       frm.remove_custom_button('\u041d\u0430 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044e','Actions');\r\n\r\n       }, 10);\r\n\r\n   }\r\n\r\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-08-17 18:18:56.093859",
+  "module": null,
+  "name": "IssueTypeFilter",
+  "script": "frappe.ui.form.on(\"Issue\", \"onload\", function(frm) {\r\n    frm.set_query(\"type\", \"_participants\", function(doc, cdt, cdn) {\r\n        return  {\r\n            filters: [\r\n                [\"DocType\",\"name\", \"in\", [\"User\", \"Contact\"]]\r\n            ]\r\n        };\r\n    });\r\n   frm.set_query(\"type\", \"estimations\", function(doc, cdt, cdn) {\r\n        return  {\r\n            filters: [\r\n                [\"DocType\",\"name\", \"in\", [\"User\", \"User Group\"]]\r\n            ]\r\n        };\r\n    }); \r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Customer",
+  "enabled": 1,
+  "modified": "2023-08-16 21:48:23.591521",
+  "module": null,
+  "name": "CustomerNameFilter",
+  "script": "frappe.ui.form.on('Customer', {\r\n  before_save: function(frm){\r\n      console.log (frm.doc)\r\n   var customer_full_name = \"\";\r\n   console.log (frm.doc.customer_engl)\r\nif (typeof frm.doc.customer_name !== undefined) {\r\ncustomer_full_name = frm.doc.customer_name ;\r\n}\r\n\r\nif (typeof frm.doc.customer_engl !== undefined) {\r\ncustomer_full_name = customer_full_name + frm.doc.customer_engl ;\r\n}\r\n\r\nif (typeof frm.doc.customer_local !== undefined) {\r\ncustomer_full_name = customer_full_name + frm.doc.customer_local ;\r\n}\r\n\r\nif (typeof frm.doc.customer_short !== undefined) {\r\ncustomer_full_name = customer_full_name + frm.doc.customer_short ;\r\n}\r\n\r\n     frm.doc.customer_full_name =  customer_full_name;\r\n      \r\n console.log (1111)\r\n        console.log (customer_full_name)\r\n  }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task",
+  "enabled": 0,
+  "modified": "2023-08-27 19:57:23.947265",
+  "module": null,
+  "name": "StatusHide",
+  "script": "frappe.ui.form.on('Task', {\n\tafter_save(frm) {\n\t\tfrm.toggle_display(['status'], frm.doc.type === 'Task');\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 0,
+  "modified": "2023-08-24 10:31:52.056630",
+  "module": null,
+  "name": "IssueAssignedToUserGroup",
+  "script": "frappe.ui.form.on('Issue', {\n\trefresh(frm) {\n\t    console.log (111);\n\t\tcur_frm.assign_to.add_assignment ('abapmaster864@gmail.com');\n\t}\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-09-04 10:10:43.893039",
+  "module": null,
+  "name": "Issue4",
+  "script": "frappe.ui.form.on('Issue', {\r\n  refresh(frm) {\r\n frm.set_df_property('sd_number', 'hidden', true);     \r\n frm.set_df_property('solman_number', 'hidden', true);\r\n frm.set_df_property(\"responsible\", 'hidden', true);\r\n frm.set_df_property(\"labor_costs_mh\", 'hidden', true);\r\n frm.set_df_property(\"wh_dev\", 'hidden', true);\r\n frm.set_df_property(\"wh_cons_row_3\", 'hidden', true);\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 0,
+  "modified": "2023-08-24 16:34:27.705838",
+  "module": null,
+  "name": "Testing Issue",
+  "script": "frappe.ui.form.on('Issue', {\n\trefresh(frm) {\n\t\tconsole.log(frm);\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-09-04 10:15:59.587168",
+  "module": null,
+  "name": "Issue Script",
+  "script": "frappe.ui.form.on('Issue', {\r\n\trefresh(frm) {\r\n\t    var identification = frm.doc.identification;\r\n\t    if (!identification) {\r\n        \tvar childTable = frm.add_child(\"identification\"); \r\n        \tchildTable.type=\"\u041d\u043e\u043c\u0435\u0440 SD \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430\" ;\r\n        \tfrm.refresh_fields(\"identification\");\r\n\t    }\r\n    },\r\n    \r\n    validate(frm) {\r\n        var identification = frm.doc.identification;\r\n        if (identification.length > 1) {\r\n            for (var i = 0; i < identification.length; i++) {\r\n                var type = identification[i].type;\r\n                for (var j = i + 1; j < identification.length; j++) {\r\n                    if (type == identification[j].type) {\r\n                        frappe.throw(\"Find duplicate: row \" + (i + 1) + \" and row \" + (j + 1));\r\n                    \r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n    \r\n});\r\n\r\n\r\nfrappe.ui.form.on('Issue', {\r\n\trefresh(frm) {\r\n\t    var _participants = frm.doc._participants;\r\n\t    if (!_participants) {\r\n        \tvar childTable = frm.add_child(\"_participants\"); \r\n        \tchildTable.role=\"\u0421\u043e\u0433\u043b\u0430\u0441\u0443\u044e\u0449\u0438\u0439 \u043e\u0446\u0435\u043d\u043a\u0443\" ;\r\n        \tfrm.refresh_fields(\"_participants\");\r\n\t    }\r\n    },\r\n    \r\n    validate(frm) {\r\n        var _participants = frm.doc._participants;\r\n        if (_participants.length > 1) {\r\n            for (var i = 0; i < _participants.length; i++) {\r\n                var role = _participants[i].role;\r\n                for (var j = i + 1; j < _participants.length; j++) {\r\n                    if (role == _participants[j].role) {\r\n                        frappe.throw(\"Find duplicate: row \" + (i + 1) + \" and row \" + (j + 1));\r\n\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n    \r\n});\r\n\r\n\r\n\r\nfrappe.ui.form.on('Issue', {\r\n\trefresh(frm) {\r\n\t            var estimations = frm.doc.estimations;\r\n\t    if (!estimations) {\r\n        \tvar childTable = frm.add_child(\"estimations\"); \r\n        \tchildTable.category1=\"\u0422\u0440\u0443\u0434\u043e\u0435\u043c\u043a\u043e\u0441\u0442\u044c, \u0447/\u0447\" ;\r\n        \tfrm.refresh_fields(\"estimations\");\r\n\t    }\r\n    },\r\n    \r\n    validate(frm) {\r\n        var estimations = frm.doc.estimations;\r\n        if (estimations.length > 1) {\r\n            for (var i = 0; i < estimations.length; i++) {\r\n                var category1 = estimations[i].category1;\r\n                for (var j = i + 1; j < estimations.length; j++) {\r\n                    \r\n                }\r\n            }\r\n        }\r\n    }\r\n    \r\n});\r\n\r\nfrappe.ui.form.on('Issue', {\r\n  customer(frm){\r\n      if (frm.doc.customer == 'Test') {\r\n        \tvar childTable = frm.add_child(\"identification\"); \r\n        \tchildTable.type=\"\u041d\u043e\u043c\u0435\u0440 Solman \u0437\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430\" ;\r\n  }\r\n      }\r\n});\r\n\r\n                    \r\n\r\n\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-09-04 10:05:44.402219",
+  "module": null,
+  "name": "Issue2",
+  "script": "frappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var code = frm.doc.identification[0].code;\r\n  frm.set_value(\"sd_number\", code);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var code = frm.doc.identification[1].code;\r\n  frm.set_value(\"solman_number\", code);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var participant = frm.doc._participants[0].participant;\r\n  frm.set_value(\"responsible\", participant);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var grade = frm.doc.estimations[0].grade;\r\n  frm.set_value(\"labor_costs_mh\", grade);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var grade = frm.doc.estimations[1].grade;\r\n  frm.set_value(\"wh_dev\", grade);\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    refresh: function(frm) {\r\n        var grade = frm.doc.estimations[2].grade;\r\n  frm.set_value(\"wh_cons_row_3\", grade);\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-09-08 17:22:00.703082",
+  "module": null,
+  "name": "IssueUserGroup",
+  "script": "frappe.ui.form.on('Issue', {\r\n\"assign_to\": function(frm) {\r\nconsole.log (111);\r\n        frappe.call({\r\n            method: \"frappe.client.get\",\r\n            args: {\r\n                doctype: \"User Group\",\r\n                filters: { name: \"\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430\" },\r\n                fieldname: [\"user_group_members\"]\r\n            },\r\n            callback: function(response) {\r\n                if (response.message.user_group_members) {\r\n                    frm.set_df_property(\"user_group\", response.message.name);\r\n                   \r\n                }\r\n            }\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ }
+]
