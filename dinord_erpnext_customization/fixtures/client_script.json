@@ -15,10 +15,10 @@
   "doctype": "Client Script",
   "dt": "Task",
   "enabled": 0,
-  "modified": "2023-09-05 12:44:36.915516",
+  "modified": "2023-09-19 11:26:44.820649",
   "module": null,
   "name": "Task Test",
-  "script": "frappe.ui.form.on('Task', {\r\n    status: function(frm) {\r\n        if(frm.doc.status === 'Pending Review') {\r\n            frappe.call({\r\n                method: \"myapp.tasks.send_email_notification\",\r\n                args: {\r\n                    task: frm.doc.name\r\n                },\r\n                callback: function(response) {\r\n                    console.log(response.message);\r\n                }\r\n            });\r\n        }\r\n    }\r\n});\r\n",
+  "script": "frappe.ui.form.on('Task', {\r\n  depends_on: function(frm, cdt, cdn) {\r\n      console.log(111);\r\n    var child = locals[cdt][cdn];\r\n    frappe.call({\r\n      method: \"frappe.client.get\",\r\n      args: {\r\n        doctype: \"Task\",\r\n        name: frm.doc.name\r\n      },\r\n      callback: function(r) {\r\n        if (r.message) {\r\n          frappe.model.set_value(cdt, cdn, \"project\", r.message.project);\r\n          frappe.model.set_value(cdt, cdn, \"issue\", r.message.issue);\r\n        }\r\n      }\r\n    });\r\n  }\r\n});",
   "view": "Form"
  },
  {
