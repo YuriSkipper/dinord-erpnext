@@ -226,5 +226,12 @@ fixtures = [
                 "TaskNotificationIfStatusPendingReview"
             ]
         ]
+    ]},
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+                "Issue-custom_expected_resolution_date"
+            ]
+        ]
     ]}
 ]
