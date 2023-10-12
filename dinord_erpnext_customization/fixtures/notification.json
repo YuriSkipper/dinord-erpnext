@@ -1,0 +1,82 @@
+[
+ {
+  "attach_print": 0,
+  "channel": "Email",
+  "condition": "doc.status==\"Pending Review\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Task",
+  "enabled": 1,
+  "event": "Save",
+  "is_standard": 0,
+  "message": "{{ doc.name }} \u043f\u0435\u0440\u0435\u0432\u0435\u0434\u0435\u043d \u0432 \u0441\u0442\u0430\u0442\u0443\u0441 \"PendingReview\". \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u0447\u0438",
+  "method": null,
+  "modified": "2023-09-05 15:03:05.369542",
+  "module": null,
+  "name": "TaskNotificationIfStatusPendingReview",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "TaskNotificationIfStatusPendingReview",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "owner",
+    "receiver_by_role": "All"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": "",
+  "sender_email": "",
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "{{ doc.name }} status changed to \"PendingReview\"",
+  "value_changed": null
+ },
+ {
+  "attach_print": 0,
+  "channel": "System Notification",
+  "condition": "doc.status==\"Pending Review\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Task",
+  "enabled": 1,
+  "event": "Save",
+  "is_standard": 0,
+  "message": "{{ doc.name }} \u043f\u0435\u0440\u0435\u0432\u0435\u0434\u0435\u043d \u0432 \u0441\u0442\u0430\u0442\u0443\u0441 \"PendingReview\". \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0437\u0430\u0434\u0430\u0447\u0438",
+  "method": null,
+  "modified": "2023-09-07 09:41:51.930637",
+  "module": null,
+  "name": "IssueToDoNotificationStatusPendingReview",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "IssueToDoNotificationStatusPendingReview",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "owner",
+    "receiver_by_role": "All"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "{{ doc.name }} status \"PendingReview\"",
+  "value_changed": null
+ }
+]

@@ -201,6 +201,8 @@ app_license = "MIT"
 # ]
 
 # Fixtures - ERPNext customization transport between different ERPNext instances
+# from erp-analytics.dinord.ru to erp-test.dinord.ru
+# from erp-test.dinord.ru to erp.dinord.ru
 
 # fixtures = [ "Client Script", "Task Type", "Custom Field", "Workflow", "Workflow State",
 #            "Role Profile", "Role", "Report", "Property Setter", "Custom Role", "Server Script",
@@ -215,3 +217,14 @@ app_license = "MIT"
 #        ]
 #    ]}
 #]
+
+fixtures = [
+    {"dt": "Notification", "filters": [
+        [
+            "name", "in", [
+                "IssueToDoNotificationStatusPendingReview",
+                "TaskNotificationIfStatusPendingReview"
+            ]
+        ]
+    ]}
+]
