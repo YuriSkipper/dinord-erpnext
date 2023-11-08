@@ -218,19 +218,53 @@ app_license = "MIT"
 #    ]}
 #]
 
+# fixtures = [
+#     {"dt": "Notification", "filters": [
+#         [
+#             "name", "in", [
+#                 "IssueToDoNotificationStatusPendingReview",
+#                 "TaskNotificationIfStatusPendingReview"
+#             ]
+#         ]
+#     ]},
+#     {"dt": "Custom Field", "filters": [
+#         [
+#             "name", "in", [
+#                 "Issue-custom_expected_resolution_date"
+#             ]
+#         ]
+#     ]}
+# ]
+
 fixtures = [
-    {"dt": "Notification", "filters": [
+
+    {"dt": "DocType", "filters": [
         [
             "name", "in", [
-                "IssueToDoNotificationStatusPendingReview",
-                "TaskNotificationIfStatusPendingReview"
+                "User Group Assign",
+                "Solution dictionary",
+                "Issue"               
+            ]
+        ]
+    ]},
+    {"dt": "Client Script", "filters": [
+        [
+            "name", "in", [
+                "IssueUserGroup",
+                "IssueSolutionFilter",
+				"ChildTableRowMandatory",
+				"IssueColor",
+				"Contact Full Name"
             ]
         ]
     ]},
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-                "Issue-custom_expected_resolution_date"
+                "Issue-custom_z_user_group",
+				"Issue-custom_categories",
+				"Issue-custom_directions_",
+				"Contact-custom_full_name"
             ]
         ]
     ]}
