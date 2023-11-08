@@ -242,8 +242,7 @@ fixtures = [
         [
             "name", "in", [
                 "User Group Assign",
-                "Solution dictionary",
-                "Issue"               
+                "Solution dictionary"             
             ]
         ]
     ]},
