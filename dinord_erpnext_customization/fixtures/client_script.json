@@ -42,16 +42,5 @@
   "name": "ChildTableRowMandatory",
   "script": "frappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm, cdt, cdn) {\r\n        if (frm.doc.status === 'Resolved' && frm.doc.project === 'PROJ-0003') {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', true);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', true);\r\n        } else {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', false);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', false);\r\n        }\r\n    }\r\n});\r\n\r\nfunction toggleGridReqd(grid, fieldname, reqd) {\r\n    grid.toggle_reqd(fieldname, reqd);\r\n}",
   "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
-  "dt": "Contact",
-  "enabled": 1,
-  "modified": "2023-11-07 11:34:21.226901",
-  "module": null,
-  "name": "Contact Full Name",
-  "script": "frappe.ui.form.on('Contact', {\r\n  last_name: function(frm) {\r\n        if (frm.doc.last_name !== undefined && frm.doc.first_name !== undefined) {\r\n            var custom_full_name = frm.doc.last_name + ' ' + frm.doc.first_name;\r\n            frm.set_value('custom_full_name', custom_full_name);\r\n            frm.toggle_display('custom_full_name', false);\r\n        }\r\n    },\r\n    first_name: function(frm) {\r\n        if (frm.doc.last_name !== undefined && frm.doc.first_name !== undefined) {\r\n            var custom_full_name = frm.doc.last_name + ' ' + frm.doc.first_name;\r\n            frm.set_value('custom_full_name', custom_full_name);\r\n            frm.toggle_display('custom_full_name', false);\r\n        }\r\n    }\r\n});",
-  "view": "Form"
  }
 ]

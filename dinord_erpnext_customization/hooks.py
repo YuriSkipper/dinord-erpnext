@@ -236,7 +236,7 @@ app_license = "MIT"
 #     ]}
 # ]
 
-fixtures = [
+fixtures = [ "Solution dictionary",
 
     {"dt": "DocType", "filters": [
         [
@@ -252,8 +252,7 @@ fixtures = [
                 "IssueUserGroup",
                 "IssueSolutionFilter",
 				"ChildTableRowMandatory",
-				"IssueColor",
-				"Contact Full Name"
+				"IssueColor"
             ]
         ]
     ]},
@@ -263,7 +262,10 @@ fixtures = [
                 "Issue-custom_z_user_group",
 				"Issue-custom_categories",
 				"Issue-custom_directions_",
-				"Contact-custom_full_name"
+                "Issue-custom_expected_resolution_date",
+                "Prospect-custom_annual_revenue",
+                "Prospect-custom_prospect_currency"
+
             ]
         ]
     ]}

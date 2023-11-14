@@ -1,0 +1,182 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 1,
+  "modified": "2023-10-25 14:53:33.129896",
+  "name": "Directions",
+  "old_parent": "",
+  "parent_solution_dictionary": null,
+  "solution_name": "Directions"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 1,
+  "modified": "2023-10-25 14:53:48.378053",
+  "name": "Category",
+  "old_parent": "",
+  "parent_solution_dictionary": null,
+  "solution_name": "Category"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:55:26.987309",
+  "name": "\u0420\u041f/\u0410\u041f",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "\u0420\u041f/\u0410\u041f"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:55:41.055983",
+  "name": "FI/CO",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "FI/CO"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:55:52.412751",
+  "name": "MM/WM",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "MM/WM"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:56:02.931716",
+  "name": "PP/QM",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "PP/QM"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:56:15.210554",
+  "name": "\u0422\u041e\u0420\u041e",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "\u0422\u041e\u0420\u041e"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:56:26.669354",
+  "name": "\u042d\u0414\u041e",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "\u042d\u0414\u041e"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:56:35.501789",
+  "name": "ABAP",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "ABAP"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:56:46.043111",
+  "name": "Basis",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "Basis"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:57:02.306253",
+  "name": "\u041c\u0435\u0442\u043e\u0434\u043e\u043b\u043e\u0433\u0438\u044f",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "\u041c\u0435\u0442\u043e\u0434\u043e\u043b\u043e\u0433\u0438\u044f"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:57:13.283763",
+  "name": "EN",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "EN"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:57:21.834686",
+  "name": "\u0418\u0411",
+  "old_parent": "Directions",
+  "parent_solution_dictionary": "Directions",
+  "solution_name": "\u0418\u0411"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:58:06.651153",
+  "name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
+  "old_parent": "Category",
+  "parent_solution_dictionary": "Category",
+  "solution_name": "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:58:17.411059",
+  "name": "\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0439",
+  "old_parent": "Category",
+  "parent_solution_dictionary": "Category",
+  "solution_name": "\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0439"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:58:29.397684",
+  "name": "\u041f\u043e \u043e\u0448\u0438\u0431\u043a\u0430\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439",
+  "old_parent": "Category",
+  "parent_solution_dictionary": "Category",
+  "solution_name": "\u041f\u043e \u043e\u0448\u0438\u0431\u043a\u0430\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:58:43.427852",
+  "name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c",
+  "old_parent": "Category",
+  "parent_solution_dictionary": "Category",
+  "solution_name": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Solution dictionary",
+  "is_group": 0,
+  "modified": "2023-10-25 14:58:53.686312",
+  "name": "\u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438",
+  "old_parent": "Category",
+  "parent_solution_dictionary": "Category",
+  "solution_name": "\u0418\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438"
+ }
+]
