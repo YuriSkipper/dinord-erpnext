@@ -249,10 +249,6 @@ fixtures = [ "Solution dictionary",
     {"dt": "Client Script", "filters": [
         [
             "name", "in", [
-                "IssueUserGroup",
-                "IssueSolutionFilter",
-				"ChildTableRowMandatory",
-				"IssueColor",
                 "Status=StatusABAP",
                 "IssueResolvedDatetime"
             ]
@@ -261,12 +257,6 @@ fixtures = [ "Solution dictionary",
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-                "Issue-custom_z_user_group",
-				"Issue-custom_categories",
-				"Issue-custom_directions_",
-                "Issue-custom_expected_resolution_date",
-                "Prospect-custom_annual_revenue",
-                "Prospect-custom_prospect_currency",
                 "Issue-custom_initiator"
             ]
         ]
