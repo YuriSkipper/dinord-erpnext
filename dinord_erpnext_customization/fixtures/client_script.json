@@ -4,10 +4,10 @@
   "doctype": "Client Script",
   "dt": "Issue",
   "enabled": 1,
-  "modified": "2023-10-26 15:15:18.663644",
+  "modified": "2023-12-04 15:46:49.478433",
   "module": "",
   "name": "IssueUserGroup",
-  "script": "function getUserGroups(assigned_to, found_groups) {\r\n  return frappe.call('frappe.client.get_list', {\r\n    doctype: 'User Group',\r\n    fields: ['name'],\r\n  }).then(function(response) {\r\n    var groups = response.message;\r\n    var user_groups = [];\r\n    var promises = [];\r\n    groups.forEach(function(group) {\r\n      promises.push(frappe.call('frappe.client.get', {\r\n        doctype: 'User Group',\r\n        filters: { name: group.name },\r\n        fieldname: ['user_group_members']\r\n      }).then(function(response) {\r\n        var users = response.message.user_group_members;\r\n        \r\n        for (var k = 0; k < users.length; k++) {\r\n          if (users[k].user === assigned_to && !found_groups.includes(response.message.name) && !user_groups.includes(response.message.name)) {\r\n            user_groups.push({user_group: response.message.name});\r\n            found_groups.push(response.message.name); \r\n          }\r\n        }\r\n      }));\r\n    });\r\n    return Promise.all(promises).then(function() {\r\n      return user_groups;\r\n    });\r\n  });\r\n}\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm) {\r\n        var assignments = frm.get_docinfo().assignments;\r\n        if (assignments === undefined) {\r\n            return;\r\n        }\r\n        if (assignments.length === 0) {\r\n            frm.set_value(\"custom_z_user_group\", \"\");\r\n        } else {\r\n            var promises = [];\r\n            var found_groups = [];\r\n            for (var i = 0; i < assignments.length; i++) {\r\n                var assigned_to = assignments[i].owner;\r\n                promises.push(getUserGroups(assigned_to, found_groups));\r\n            }\r\n            if (!frm.saving) { \r\n                frm.saving = true; \r\n                frappe.run_serially([\r\n                    function() {\r\n                        return Promise.all(promises);\r\n                    },\r\n                    function(user_groups_arr) {\r\n                        var all_user_groups = [].concat.apply([], user_groups_arr);\r\n                        frm.set_value(\"custom_z_user_group\", all_user_groups);\r\n                    },\r\n                    function() {\r\n                        return frm.save();\r\n                    }\r\n                ]).catch(function(error) {\r\n                    console.log(error);\r\n                }).finally(function() {\r\n                    frm.saving = false; \r\n                });\r\n            }\r\n        }\r\n    }\r\n});",
+  "script": "function getUserGroups(assigned_to, found_groups) {\r\n  return frappe.call('frappe.client.get_list', {\r\n    doctype: 'User Group',\r\n    fields: ['name'],\r\n  }).then(function(response) {\r\n    var groups = response.message;\r\n    var user_groups = [];\r\n    var promises = [];\r\n    groups.forEach(function(group) {\r\n      promises.push(frappe.call('frappe.client.get', {\r\n        doctype: 'User Group',\r\n        filters: { name: group.name },\r\n        fieldname: ['user_group_members']\r\n      }).then(function(response) {\r\n        var users = response.message.user_group_members;\r\n        \r\n        for (var k = 0; k < users.length; k++) {\r\n          if (users[k].user === assigned_to && !found_groups.includes(response.message.name) && !user_groups.includes(response.message.name)) {\r\n            user_groups.push({user_group: response.message.name});\r\n            found_groups.push(response.message.name); \r\n          }\r\n        }\r\n      }));\r\n    });\r\n    return Promise.all(promises).then(function() {\r\n      return user_groups;\r\n    });\r\n  });\r\n}\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm) {\r\n        var assignments = frm.get_docinfo().assignments;\r\n        if (assignments === undefined) {\r\n            return;\r\n        }\r\n        if (assignments.length === 0) {\r\n            frm.set_value(\"custom_z_user_group\", \"\");\r\n        } else {\r\n            var promises = [];\r\n            var found_groups = [];\r\n            for (var i = 0; i < assignments.length; i++) {\r\n                var assigned_to = assignments[i].owner;\r\n                promises.push(getUserGroups(assigned_to, found_groups));\r\n            }\r\n            if (!frm.saving) { \r\n                frm.saving = true; \r\n                frappe.run_serially([\r\n                    function() {\r\n                        return Promise.all(promises);\r\n                    },\r\n                    function(user_groups_arr) {\r\n                        var all_user_groups = [].concat.apply([], user_groups_arr);\r\n                        frm.set_value(\"custom_z_user_group\", all_user_groups);\r\n                    },\r\n                    function() {\r\n                        return frm.save();\r\n                    }\r\n                ]).catch(function(error) {\r\n                    console.log(error);\r\n                }).finally(function() {\r\n                    frm.saving = false; \r\n                });\r\n            }\r\n        }\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm) {\r\n        frm.set_df_property(\"custom_z_user_group\", \"read_only\", 1);\r\n    }\r\n});",
   "view": "Form"
  },
  {
@@ -41,6 +41,28 @@
   "module": null,
   "name": "ChildTableRowMandatory",
   "script": "frappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm, cdt, cdn) {\r\n        if (frm.doc.status === 'Resolved' && frm.doc.project === 'PROJ-0003') {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', true);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', true);\r\n        } else {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', false);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', false);\r\n        }\r\n    }\r\n});\r\n\r\nfunction toggleGridReqd(grid, fieldname, reqd) {\r\n    grid.toggle_reqd(fieldname, reqd);\r\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Task",
+  "enabled": 1,
+  "modified": "2023-11-17 17:41:49.578526",
+  "module": null,
+  "name": "Status=StatusABAP",
+  "script": "frappe.ui.form.on(\"Task\", {\r\n   after_workflow_action: function(frm) {\r\n       console.log ('\u041f\u0440\u0438\u0432\u0435\u0442');\r\n    if (frm.doc.status_abap == \"\u0412\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u043e\") {\r\n        console.log ('Hello');\r\n      frm.set_value(\"status\", \"Completed\");\r\n    }\r\n  }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Issue",
+  "enabled": 1,
+  "modified": "2023-12-04 18:17:42.146930",
+  "module": null,
+  "name": "IssueResolvedDatetime",
+  "script": "frappe.ui.form.on(\"Issue\", {\r\n  status: function(frm) {\r\n    if ([\"Open\", \"Replied\", \"On Hold\"].includes(frm.doc.status)) {\r\n      frm.toggle_display(\"resolution_date\", false);\r\n     } else if (frm.doc.status === \"Resolved\") {\r\n      frm.toggle_display(\"resolution_date\", true);\r\n      frm.set_value(\"resolution_date\", frappe.datetime.now_datetime());\r\n     }  \r\n  }\r\n});\r\n",
   "view": "Form"
  }
 ]

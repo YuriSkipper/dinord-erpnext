@@ -274,9 +274,8 @@ fixtures = [ "Solution dictionary",
     {"dt": "Report", "filters": [
         [
             "name", "in", [
-                "R-PHARM_Custom_Report" 
+                "R-PHARM_Custom_Report"
             ]
-
         ]
     ]}
 ]
