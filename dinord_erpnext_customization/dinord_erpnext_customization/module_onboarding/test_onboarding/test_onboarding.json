@@ -1,0 +1,26 @@
+{
+ "allow_roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "creation": "2023-11-20 16:44:47.857700",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "https://docs.google.com/spreadsheets/d/1xdeK8bSsR46RPh-AjfEGegSxQF9t4oEnlaZTysVXS1M/edit#gid=0",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2023-11-20 16:45:44.719367",
+ "modified_by": "iodyshev@dinord.email",
+ "module": "Dinord ERPNext Customization",
+ "name": "Test Onboarding",
+ "owner": "iodyshev@dinord.email",
+ "steps": [
+  {
+   "step": "Test Onboarding Step"
+  }
+ ],
+ "subtitle": "123",
+ "success_message": "Hello!",
+ "title": "Test Onboarding"
+}

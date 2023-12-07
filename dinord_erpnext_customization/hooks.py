@@ -252,7 +252,9 @@ fixtures = [ "Solution dictionary",
                 "IssueUserGroup",
                 "IssueSolutionFilter",
 				"ChildTableRowMandatory",
-				"IssueColor"
+				"IssueColor",
+                "Status=StatusABAP",
+                "IssueResolvedDatetime"
             ]
         ]
     ]},
@@ -264,9 +266,17 @@ fixtures = [ "Solution dictionary",
 				"Issue-custom_directions_",
                 "Issue-custom_expected_resolution_date",
                 "Prospect-custom_annual_revenue",
-                "Prospect-custom_prospect_currency"
-
+                "Prospect-custom_prospect_currency",
+                "Issue-custom_initiator"
             ]
+        ]
+    ]},
+    {"dt": "Report", "filters": [
+        [
+            "name", "in", [
+                "R-PHARM_Custom_Report" 
+            ]
+
         ]
     ]}
 ]
