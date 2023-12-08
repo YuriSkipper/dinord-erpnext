@@ -2,50 +2,6 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
-  "dt": "Issue",
-  "enabled": 1,
-  "modified": "2023-12-04 15:46:49.478433",
-  "module": "",
-  "name": "IssueUserGroup",
-  "script": "function getUserGroups(assigned_to, found_groups) {\r\n  return frappe.call('frappe.client.get_list', {\r\n    doctype: 'User Group',\r\n    fields: ['name'],\r\n  }).then(function(response) {\r\n    var groups = response.message;\r\n    var user_groups = [];\r\n    var promises = [];\r\n    groups.forEach(function(group) {\r\n      promises.push(frappe.call('frappe.client.get', {\r\n        doctype: 'User Group',\r\n        filters: { name: group.name },\r\n        fieldname: ['user_group_members']\r\n      }).then(function(response) {\r\n        var users = response.message.user_group_members;\r\n        \r\n        for (var k = 0; k < users.length; k++) {\r\n          if (users[k].user === assigned_to && !found_groups.includes(response.message.name) && !user_groups.includes(response.message.name)) {\r\n            user_groups.push({user_group: response.message.name});\r\n            found_groups.push(response.message.name); \r\n          }\r\n        }\r\n      }));\r\n    });\r\n    return Promise.all(promises).then(function() {\r\n      return user_groups;\r\n    });\r\n  });\r\n}\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm) {\r\n        var assignments = frm.get_docinfo().assignments;\r\n        if (assignments === undefined) {\r\n            return;\r\n        }\r\n        if (assignments.length === 0) {\r\n            frm.set_value(\"custom_z_user_group\", \"\");\r\n        } else {\r\n            var promises = [];\r\n            var found_groups = [];\r\n            for (var i = 0; i < assignments.length; i++) {\r\n                var assigned_to = assignments[i].owner;\r\n                promises.push(getUserGroups(assigned_to, found_groups));\r\n            }\r\n            if (!frm.saving) { \r\n                frm.saving = true; \r\n                frappe.run_serially([\r\n                    function() {\r\n                        return Promise.all(promises);\r\n                    },\r\n                    function(user_groups_arr) {\r\n                        var all_user_groups = [].concat.apply([], user_groups_arr);\r\n                        frm.set_value(\"custom_z_user_group\", all_user_groups);\r\n                    },\r\n                    function() {\r\n                        return frm.save();\r\n                    }\r\n                ]).catch(function(error) {\r\n                    console.log(error);\r\n                }).finally(function() {\r\n                    frm.saving = false; \r\n                });\r\n            }\r\n        }\r\n    }\r\n});\r\n\r\nfrappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm) {\r\n        frm.set_df_property(\"custom_z_user_group\", \"read_only\", 1);\r\n    }\r\n});",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
-  "dt": "Issue",
-  "enabled": 1,
-  "modified": "2023-11-03 06:11:38.497416",
-  "module": null,
-  "name": "IssueSolutionFilter",
-  "script": "frappe.ui.form.on(\"Issue\", \"onload\", function(frm) {\r\n  frm.set_query(\"custom_categories\", function() {\r\n    return {\r\n      \"filters\": {\r\n        \"parent_solution_dictionary\": \"Category\"\r\n      }\r\n    };\r\n  });\r\n   frm.set_query(\"custom_directions_\", function() {\r\n    return {\r\n      \"filters\": {\r\n        \"parent_solution_dictionary\": \"Directions\"\r\n      }\r\n    };\r\n  });\r\n});\r\n",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
-  "dt": "Issue",
-  "enabled": 1,
-  "modified": "2023-11-01 10:25:28.741013",
-  "module": null,
-  "name": "IssueColor",
-  "script": "function set_css(frm) {\r\n  var user_roles = frappe.user_roles;\r\n  if (user_roles.includes('Z_Dinord_SAP_Support_Consultant')) {\r\n    var subject_label = document.querySelector(\"[data-fieldname='subject'] label\");\r\n    subject_label.style.fontWeight = 'bold';\r\n    subject_label.style.display = 'block';\r\n    subject_label.style.marginBottom = '5px';\r\n    subject_label.style.color = '#333';\r\n\r\n    var issue_type_label = document.querySelector(\"[data-fieldname='issue_type'] label\");\r\n    issue_type_label.style.fontWeight = 'bold';\r\n    issue_type_label.style.display = 'block';\r\n    issue_type_label.style.marginBottom = '5px';\r\n    issue_type_label.style.color = '#333';\r\n\r\n    document.querySelectorAll(\"[data-fieldname ='role']\")[1].style.fontWeight = 'bold';\r\n    document.querySelectorAll(\"[data-fieldname ='type']\")[1].style.fontWeight = 'bold';\r\n    document.querySelectorAll(\"[data-fieldname ='type']\")[2].style.fontWeight = 'bold';\r\n    document.querySelectorAll(\"[data-fieldname ='category1']\")[1].style.fontWeight = 'bold';\r\n  }\r\n}\r\n\r\nfrappe.ui.form.on('Issue', {\r\n  onload: function(frm) {\r\n    set_css(frm);\r\n  }\r\n});\r\n\r\n",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
-  "dt": "Issue",
-  "enabled": 1,
-  "modified": "2023-11-01 11:24:49.519874",
-  "module": null,
-  "name": "ChildTableRowMandatory",
-  "script": "frappe.ui.form.on(\"Issue\", {\r\n    before_save: function(frm, cdt, cdn) {\r\n        if (frm.doc.status === 'Resolved' && frm.doc.project === 'PROJ-0003') {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', true);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', true);\r\n        } else {\r\n            toggleGridReqd(frm.fields_dict.identification.grid, 'code', false);\r\n            toggleGridReqd(frm.fields_dict.custom__participants.grid, 'participant', false);\r\n        }\r\n    }\r\n});\r\n\r\nfunction toggleGridReqd(grid, fieldname, reqd) {\r\n    grid.toggle_reqd(fieldname, reqd);\r\n}",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
   "dt": "Task",
   "enabled": 1,
   "modified": "2023-11-17 17:41:49.578526",

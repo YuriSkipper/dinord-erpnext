@@ -246,6 +246,14 @@ fixtures = [ "Solution dictionary",
             ]
         ]
     ]},
+    {"dt": "Notification", "filters": [
+         [
+             "name", "in", [
+                 "IssueToDoNotificationStatusPendingReview",
+                 "TaskNotificationIfStatusPendingReview"
+             ]
+         ]
+    ]},
     {"dt": "Client Script", "filters": [
         [
             "name", "in", [
